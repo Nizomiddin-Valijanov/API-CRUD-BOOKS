@@ -1,0 +1,198 @@
+:root {
+  --havo_rang: #6ad4dd;
+  --zangor_rang: #5f8670;
+  --urtancha_zangor: #116d6e;
+  --purpurniy: #d6589f;
+  --och_kulrang: #c4dfdf;
+  --danger: #df2e38;
+  --edit_color: #496989;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
+}
+
+body {
+  background-color: var(--havo_rang);
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+input {
+  border: none;
+  outline: none;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.form {
+  background-color: white;
+  width: 500px;
+  margin: 30px auto;
+  border-radius: 10px;
+  padding: 20px 20px;
+  /* box-shadow: 0 0 15px 1px gray; */
+  box-shadow: 0 0 15px 1px var(--och_kulrang);
+}
+
+.form > h1 {
+  font-size: 32px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.input_boxes_item {
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input_box_form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input_box_form label {
+  font-size: 16px;
+}
+
+.input_box_form input {
+  padding: 5px 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 1px 0px var(--urtancha_zangor);
+  border: none;
+  outline: none;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+.input_box_form input:focus {
+  box-shadow: 0 0 5px -1px var(--urtancha_zangor);
+}
+
+.submit_btn {
+  padding: 7px 10px;
+  width: 100px;
+  margin: 0 0 0 auto;
+  background-color: var(--purpurniy);
+  color: white;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.table_main {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  border-color: #c4dfdf;
+}
+
+.table thead th {
+  font-size: 16px;
+  padding: 5px 0;
+  background-color: #b6bbc4;
+}
+.title_th,
+.author_th {
+  text-align: start;
+  padding-left: 15px !important;
+}
+.table tbody td {
+  border-color: var(--havo_rang);
+  text-align: center;
+  padding: 5px 0;
+  background-color: #b6bbc4;
+}
+
+.title_td,
+.author_td {
+  text-align: start !important;
+  padding-left: 15px !important;
+}
+
+.no_data {
+  padding: 10px;
+  width: 100%;
+}
+
+.no_data span {
+  display: inline-flex;
+  gap: 3px;
+}
+.no_data span p {
+  animation-name: loading;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  font-size: 18px;
+}
+.no_data span p:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.no_data span p:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.no_data span p:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+@keyframes loading {
+  0% {
+    transform: translateY(0px);
+    color: var(--purpurniy);
+  }
+  50% {
+    transform: translateY(-2px);
+    color: var(--zangor_rang);
+  }
+  100% {
+    transform: translateY(-3px);
+    color: var(--urtancha_zangor);
+  }
+}
+
+.no_data b {
+  font-weight: 500;
+}
+
+.edit_td {
+  background-color: var(--edit_color) !important;
+  color: white;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.delete_td {
+  background-color: var(--danger) !important;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.delete_td button {
+  background: none;
+  width: 100%;
+  height: 100%;
+  color: white;
+}

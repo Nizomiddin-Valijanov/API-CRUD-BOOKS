@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUD Books</title>
+    <!-- font: Ubuntu -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- style.css -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form class="form">
+        <h1>Form</h1>
+
+        <div class="input_boxes_item">
+          <div class="input_box_form">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              placeholder="Enter books name"
+              name="title"
+              required
+            />
+          </div>
+          <div class="input_box_form">
+            <label for="author">Author</label>
+            <input
+              type="text"
+              id="author"
+              placeholder="Enter books Author"
+              name="author"
+              required
+            />
+          </div>
+          <div class="input_box_form">
+            <label for="quantity">Quantity</label>
+            <input
+              type="number"
+              id="name"
+              placeholder="Enter quantity of books"
+              name="quantity"
+              required
+            />
+          </div>
+
+          <button class="submit_btn" type="submit">Submit</button>
+        </div>
+      </form>
+
+      <section class="table_main">
+        <table class="table" border="1px">
+          <thead>
+            <tr>
+              <th>№</th>
+              <th class="title_th">Title</th>
+              <th class="author_th">Author</th>
+              <th>Quantity</th>
+              <th colspan="2">actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </div>
+  </body>
+  <script src="index.js"></script>
+</html>
