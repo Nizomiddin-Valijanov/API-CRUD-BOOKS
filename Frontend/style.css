@@ -1,6 +1,7 @@
 :root {
   --havo_rang: #6ad4dd;
   --zangor_rang: #5f8670;
+  --toq_zangor: #627254;
   --urtancha_zangor: #116d6e;
   --purpurniy: #d6589f;
   --och_kulrang: #c4dfdf;
@@ -73,12 +74,12 @@ input {
   box-shadow: 0 0 1px 0px var(--urtancha_zangor);
   border: none;
   outline: none;
-  transition: 0.3s;
+  transition: 0.1s;
   font-size: 15px;
 }
 
 .input_box_form input:focus {
-  box-shadow: 0 0 5px -1px var(--urtancha_zangor);
+  box-shadow: 0 0 3px 0px var(--urtancha_zangor);
 }
 
 .submit_btn {
@@ -98,24 +99,32 @@ input {
 .table {
   border-collapse: collapse;
   width: 100%;
-  border-color: #c4dfdf;
+  border-color: transparent;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .table thead th {
   font-size: 16px;
-  padding: 5px 0;
-  background-color: #b6bbc4;
+  padding: 10px 5px;
+  background-color: var(--toq_zangor);
+  font-weight: 500;
 }
 .title_th,
 .author_th {
   text-align: start;
   padding-left: 15px !important;
 }
-.table tbody td {
-  border-color: var(--havo_rang);
+
+.table tbody tr td {
   text-align: center;
-  padding: 5px 0;
-  background-color: #b6bbc4;
+  padding: 10px 0;
+  background-color: var(--zangor_rang);
+  border-bottom: 1px solid var(--urtancha_zangor);
+}
+
+.index_td {
+  background-color: var(--toq_zangor) !important;
 }
 
 .title_td,
@@ -172,27 +181,29 @@ input {
   font-weight: 500;
 }
 
-.edit_td {
+.edit_td button {
   background-color: var(--edit_color) !important;
   color: white;
-  border-radius: 5px;
-  text-transform: uppercase;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 500;
   cursor: pointer;
-}
-
-.delete_td {
-  background-color: var(--danger) !important;
+  border-bottom: none !important;
+  padding: 5px 10px;
   border-radius: 5px;
-  font-size: 12px;
-  font-weight: 500;
-  cursor: pointer;
 }
 
 .delete_td button {
-  background: none;
-  width: 100%;
-  height: 100%;
+  cursor: pointer;
+  background-color: var(--danger) !important;
   color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.edit_td,
+.delete_td {
+  width: 70px;
+  margin: 0 10px;
 }

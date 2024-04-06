@@ -2,7 +2,10 @@ let url = "http://localhost:8080/books";
 
 let tbody = document.querySelector("tbody"),
   form = document.querySelector(".form"),
-  inputs = document.querySelectorAll(".input_box_form input");
+  inputs = document.querySelectorAll(".input_box_form input"),
+  submitBtn = document.querySelector(".submit_btn");
+
+let update = false;
 
 async function fetchData() {
   try {
@@ -31,11 +34,13 @@ function innerToTable(data) {
     data.map((el, index) => {
       tbody.innerHTML += `
             <tr>
-                <td>${index + 1}</td>
+                <td class="index_td">${index + 1}</td>
                 <td class="title_td">${el?.title}</td>
                 <td class="author_td">${el?.author}</td>
                 <td>${el?.quantity}</td>
-                <td class="edit_td" onclick="handleEdit()">Edit</td>
+                <td class="edit_td">
+                  <button onclick="handleEdit('${el.Id}')">Edit</button>
+                </td>
                 <td class="delete_td">
                   <button onclick="handleDelete('${el.Id}')">Delete</button>
                 </td>
@@ -85,12 +90,35 @@ form.addEventListener("submit", (event) => {
     };
   });
 
-  postData(inputsValue);
+  if (update) {
+    patchData(inputsValue);
+  } else {
+    postData(inputsValue);
+  }
 });
 
+async function patchData(obj) {
+  try {
+    const response = await fetch(url + `/${obj.Id}`, {
+      method: "PUT",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(obj),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to patch data");
+    }
+
+    clearInputValue();
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 async function postData(obj) {
-  console.log(obj);
-  console.log(JSON.stringify(obj));
   try {
     fetch(url, {
       method: "POST",
@@ -121,6 +149,17 @@ async function handleDelete(id) {
   }
 }
 
-async function handleEdit() {
-  console.log("Salom");
+async function handleEdit(id) {
+  try {
+    const response = await fetch(url + `/${id}`, { method: "GET" });
+    inputsValue = await response.json();
+  } catch (error) {
+    console.error(error);
+  }
+
+  inputs.forEach((input) => {
+    input.value = inputsValue[input.name];
+  });
+  submitBtn.innerHTML = "Update";
+  update = true;
 }
